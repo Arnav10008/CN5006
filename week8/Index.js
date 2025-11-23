@@ -95,4 +95,30 @@ person_doc.find({
     })
     .catch(err => {
         console.error(err)
-    })nide
+    }) 
+
+
+// counting all the documents
+person_doc.countDocuments().exec()
+.then(count=>{
+console.log("Total documents Count :", count)
+}) .catch(err => {
+console.error(err)
+})
+
+person_doc.deleteMany({ age: { $gte: 25 } })
+.exec()
+.then(docs=>{
+console.log('deleted documents are:',docs);
+}).catch(function(error){
+console.log(error);
+});
+
+person_doc.updateMany({ Gender: "Female" },{Salay:5555})
+.exec()
+.then(docs=>{
+console.log("update")
+console.log(docs); // Success
+}).catch(function(error){
+console.log(error); // Failure
+})
